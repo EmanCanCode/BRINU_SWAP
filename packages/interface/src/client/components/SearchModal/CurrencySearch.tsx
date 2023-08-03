@@ -12,6 +12,7 @@ import { useSelectedListInfo } from "../../state/lists/hooks";
 import { CloseIcon, LinkStyledButton, TYPE } from "../../theme";
 import { isAddress } from "../../utils";
 import Column from "../Column";
+import { StyledLogo } from "../CurrencyLogo";
 import ListLogo from "../ListLogo";
 import QuestionHelper from "../QuestionHelper";
 import Row, { RowBetween } from "../Row";
@@ -193,11 +194,20 @@ export function CurrencySearch({
                         {selectedListInfo.current ? (
                             <Row>
                                 {selectedListInfo.current.logoURI ? (
-                                    <ListLogo
-                                        style={{ marginRight: 12 }}
-                                        logoURI={selectedListInfo.current.logoURI}
-                                        alt={`${selectedListInfo.current.name} list logo`}
-                                    />
+                                    selectedListInfo.current.name == "Default" ? (
+                                        <StyledLogo
+                                            size={"24px"}
+                                            srcs={["https://breed.dog/assets/header.png"]}
+                                            alt=""
+                                            style={{ height: "24px", width: "24px" }}
+                                        />
+                                    ) : (
+                                        <ListLogo
+                                            style={{ marginRight: 12 }}
+                                            logoURI={selectedListInfo.current.logoURI}
+                                            alt={`${selectedListInfo.current.name} list logo`}
+                                        />
+                                    )
                                 ) : null}
                                 <TYPE.main id="currency-search-selected-list-name">
                                     {selectedListInfo.current.name}

@@ -99,11 +99,10 @@ const LowerSection = styled.div`
     background-color: ${({ theme }) => theme.bg2};
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 20px;
-
-    h5 {
+    color: #dbbf04 h5 {
         margin: 0;
         font-weight: 400;
-        color: ${({ theme }) => theme.text3};
+        color: #dbbf04;
     }
 `;
 
@@ -180,6 +179,7 @@ const IconWrapper = styled.div<{ size?: number }>`
 
 const TransactionListWrapper = styled.div`
     ${({ theme }) => theme.flexColumnNoWrap};
+    color: black;
 `;
 
 const WalletAction = styled(ButtonSecondary)`
@@ -381,7 +381,7 @@ export default function AccountDetails({
                 </LowerSection>
             ) : (
                 <LowerSection>
-                    <TYPE.body color={theme.text1}>Your transactions will appear here...</TYPE.body>
+                    <TYPE.body color={"#dbbf04"}>Your transactions will appear here...</TYPE.body>
                 </LowerSection>
             )}
         </>

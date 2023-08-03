@@ -1,9 +1,9 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
 
-import QuestionHelper from "../QuestionHelper";
 import { TYPE } from "../../theme";
 import { AutoColumn } from "../Column";
+import QuestionHelper from "../QuestionHelper";
 import { RowBetween, RowFixed } from "../Row";
 
 import { darken } from "polished";
@@ -30,10 +30,10 @@ const FancyButton = styled.button`
     outline: none;
     background: ${({ theme }) => theme.bg1};
     :hover {
-        border: 1px solid ${({ theme }) => theme.bg4};
+        border: 1px solid #f4d504;
     }
     :focus {
-        border: 1px solid ${({ theme }) => theme.primary1};
+        border: 1px solid #f4d504};
     }
 `;
 
@@ -42,8 +42,8 @@ const Option = styled(FancyButton)<{ active: boolean }>`
     :hover {
         cursor: pointer;
     }
-    background-color: ${({ active, theme }) => active && theme.primary1};
-    color: ${({ active, theme }) => (active ? theme.white : theme.text1)};
+    background-color: ${({ active }) => active && "#f4d504"};
+    color: black;
 `;
 
 const Input = styled.input`

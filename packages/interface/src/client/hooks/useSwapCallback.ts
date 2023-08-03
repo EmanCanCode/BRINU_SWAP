@@ -151,8 +151,8 @@ export function useSwapCallback(
                                         console.debug("Call threw error", call, callError);
                                         let errorMessage: string;
                                         switch (callError.reason) {
-                                            case "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT":
-                                            case "DogeSwapV2Router: EXCESSIVE_INPUT_AMOUNT":
+                                            case "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT":
+                                            case "BreedSwapV2Router: EXCESSIVE_INPUT_AMOUNT":
                                                 errorMessage =
                                                     "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.";
                                                 break;

@@ -9,14 +9,14 @@ import "./libraries/SafeMath.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/IWWDOGE.sol";
 
-contract DogeSwapV2Router is IDogeSwapV2Router02 {
+contract BreedSwapV2Router is IDogeSwapV2Router02 {
     using SafeMath for uint;
 
     address public immutable override factory;
     address public immutable override WWDOGE;
 
     modifier ensure(uint deadline) {
-        require(deadline >= block.timestamp, "DogeSwapV2Router: EXPIRED");
+        require(deadline >= block.timestamp, "BreedSwapV2Router: EXPIRED");
         _;
     }
 
@@ -48,12 +48,12 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         } else {
             uint amountBOptimal = DogeSwapV2Library.quote(amountADesired, reserveA, reserveB);
             if (amountBOptimal <= amountBDesired) {
-                require(amountBOptimal >= amountBMin, "DogeSwapV2Router: INSUFFICIENT_B_AMOUNT");
+                require(amountBOptimal >= amountBMin, "BreedSwapV2Router: INSUFFICIENT_B_AMOUNT");
                 (amountA, amountB) = (amountADesired, amountBOptimal);
             } else {
                 uint amountAOptimal = DogeSwapV2Library.quote(amountBDesired, reserveB, reserveA);
                 assert(amountAOptimal <= amountADesired);
-                require(amountAOptimal >= amountAMin, "DogeSwapV2Router: INSUFFICIENT_A_AMOUNT");
+                require(amountAOptimal >= amountAMin, "BreedSwapV2Router: INSUFFICIENT_A_AMOUNT");
                 (amountA, amountB) = (amountAOptimal, amountBDesired);
             }
         }
@@ -137,8 +137,8 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         (uint amount0, uint amount1) = IDogeSwapV2Pair(pair).burn(to);
         (address token0, ) = DogeSwapV2Library.sortTokens(tokenA, tokenB);
         (amountA, amountB) = tokenA == token0 ? (amount0, amount1) : (amount1, amount0);
-        require(amountA >= amountAMin, "DogeSwapV2Router: INSUFFICIENT_A_AMOUNT");
-        require(amountB >= amountBMin, "DogeSwapV2Router: INSUFFICIENT_B_AMOUNT");
+        require(amountA >= amountAMin, "BreedSwapV2Router: INSUFFICIENT_A_AMOUNT");
+        require(amountB >= amountBMin, "BreedSwapV2Router: INSUFFICIENT_B_AMOUNT");
     }
 
     function removeLiquidityWDOGE(
@@ -285,7 +285,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         uint deadline
     ) external virtual override ensure(deadline) returns (uint[] memory amounts) {
         amounts = DogeSwapV2Library.getAmountsOut(factory, amountIn, path);
-        require(amounts[amounts.length - 1] >= amountOutMin, "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
+        require(amounts[amounts.length - 1] >= amountOutMin, "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -303,7 +303,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         uint deadline
     ) external virtual override ensure(deadline) returns (uint[] memory amounts) {
         amounts = DogeSwapV2Library.getAmountsIn(factory, amountOut, path);
-        require(amounts[0] <= amountInMax, "DogeSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
+        require(amounts[0] <= amountInMax, "BreedSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -319,9 +319,9 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external payable virtual override ensure(deadline) returns (uint[] memory amounts) {
-        require(path[0] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[0] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         amounts = DogeSwapV2Library.getAmountsOut(factory, msg.value, path);
-        require(amounts[amounts.length - 1] >= amountOutMin, "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
+        require(amounts[amounts.length - 1] >= amountOutMin, "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
         IWWDOGE(WWDOGE).deposit{value: amounts[0]}();
         assert(IWWDOGE(WWDOGE).transfer(DogeSwapV2Library.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
@@ -334,9 +334,9 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external virtual override ensure(deadline) returns (uint[] memory amounts) {
-        require(path[path.length - 1] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[path.length - 1] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         amounts = DogeSwapV2Library.getAmountsIn(factory, amountOut, path);
-        require(amounts[0] <= amountInMax, "DogeSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
+        require(amounts[0] <= amountInMax, "BreedSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -355,9 +355,9 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external virtual override ensure(deadline) returns (uint[] memory amounts) {
-        require(path[path.length - 1] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[path.length - 1] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         amounts = DogeSwapV2Library.getAmountsOut(factory, amountIn, path);
-        require(amounts[amounts.length - 1] >= amountOutMin, "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
+        require(amounts[amounts.length - 1] >= amountOutMin, "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -375,9 +375,9 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external payable virtual override ensure(deadline) returns (uint[] memory amounts) {
-        require(path[0] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[0] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         amounts = DogeSwapV2Library.getAmountsIn(factory, amountOut, path);
-        require(amounts[0] <= msg.value, "DogeSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
+        require(amounts[0] <= msg.value, "BreedSwapV2Router: EXCESSIVE_INPUT_AMOUNT");
         IWWDOGE(WWDOGE).deposit{value: amounts[0]}();
         assert(IWWDOGE(WWDOGE).transfer(DogeSwapV2Library.pairFor(factory, path[0], path[1]), amounts[0]));
         _swap(amounts, path, to);
@@ -424,7 +424,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         _swapSupportingFeeOnTransferTokens(path, to);
         require(
             IERC20(path[path.length - 1]).balanceOf(to).sub(balanceBefore) >= amountOutMin,
-            "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
+            "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
     }
 
@@ -434,7 +434,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external payable virtual override ensure(deadline) {
-        require(path[0] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[0] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         uint amountIn = msg.value;
         IWWDOGE(WWDOGE).deposit{value: amountIn}();
         assert(IWWDOGE(WWDOGE).transfer(DogeSwapV2Library.pairFor(factory, path[0], path[1]), amountIn));
@@ -442,7 +442,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         _swapSupportingFeeOnTransferTokens(path, to);
         require(
             IERC20(path[path.length - 1]).balanceOf(to).sub(balanceBefore) >= amountOutMin,
-            "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
+            "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
         );
     }
 
@@ -453,7 +453,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         address to,
         uint deadline
     ) external virtual override ensure(deadline) {
-        require(path[path.length - 1] == WWDOGE, "DogeSwapV2Router: INVALID_PATH");
+        require(path[path.length - 1] == WWDOGE, "BreedSwapV2Router: INVALID_PATH");
         TransferHelper.safeTransferFrom(
             path[0],
             msg.sender,
@@ -462,7 +462,7 @@ contract DogeSwapV2Router is IDogeSwapV2Router02 {
         );
         _swapSupportingFeeOnTransferTokens(path, address(this));
         uint amountOut = IERC20(WWDOGE).balanceOf(address(this));
-        require(amountOut >= amountOutMin, "DogeSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
+        require(amountOut >= amountOutMin, "BreedSwapV2Router: INSUFFICIENT_OUTPUT_AMOUNT");
         IWWDOGE(WWDOGE).withdraw(amountOut);
         TransferHelper.safeTransferETH(to, amountOut);
     }

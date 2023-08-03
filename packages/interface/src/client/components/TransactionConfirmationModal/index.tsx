@@ -84,16 +84,16 @@ function TransactionSubmittedContent({
                     <CloseIcon onClick={onDismiss} />
                 </RowBetween>
                 <ConfirmedIcon>
-                    <ArrowUpCircle strokeWidth={0.5} size={90} color={theme.primary1} />
+                    <ArrowUpCircle strokeWidth={0.5} size={90} color={"#dbbf04"} />
                 </ConfirmedIcon>
                 <AutoColumn gap="12px" justify={"center"}>
-                    <Text fontWeight={500} fontSize={20}>
+                    <Text fontWeight={500} fontSize={20} color={"black"}>
                         Transaction Submitted
                     </Text>
 
                     {chainId && hash && (
                         <ExternalLink href={getExplorerLink(chainId, hash, "transaction")}>
-                            <Text fontWeight={500} fontSize={14} color={theme.primary1}>
+                            <Text fontWeight={500} fontSize={14} color={"black"}>
                                 View on Explorer
                             </Text>
                         </ExternalLink>

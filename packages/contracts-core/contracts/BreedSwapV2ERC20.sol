@@ -1,13 +1,13 @@
 pragma solidity =0.5.16;
 
-import "./interfaces/IDogeSwapV2ERC20.sol";
+import "./interfaces/IBreedSwapV2ERC20.sol";
 import "./libraries/SafeMath.sol";
 
-contract DogeSwapV2ERC20 is IDogeSwapV2ERC20 {
+contract BreedSwapV2ERC20 is IDogeSwapV2ERC20 {
     using SafeMath for uint;
 
-    string public constant name = "DogeSwap V2";
-    string public constant symbol = "DST-V2";
+    string public constant name = "BreedSwapV1";
+    string public constant symbol = "BIS-V1";
     uint8 public constant decimals = 18;
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
@@ -99,7 +99,7 @@ contract DogeSwapV2ERC20 is IDogeSwapV2ERC20 {
         bytes32 r,
         bytes32 s
     ) external {
-        require(deadline >= block.timestamp, "DogeSwapV2: EXPIRED");
+        require(deadline >= block.timestamp, "dev: EXPIRED");
         bytes32 digest = keccak256(
             abi.encodePacked(
                 "\x19\x01",
@@ -108,7 +108,7 @@ contract DogeSwapV2ERC20 is IDogeSwapV2ERC20 {
             )
         );
         address recoveredAddress = ecrecover(digest, v, r, s);
-        require(recoveredAddress != address(0) && recoveredAddress == owner, "DogeSwapV2: INVALID_SIGNATURE");
+        require(recoveredAddress != address(0) && recoveredAddress == owner, "dev: INVALID_SIGNATURE");
         _approve(owner, spender, value);
     }
 }

@@ -15,7 +15,7 @@ interface FullFixture extends FactoryFixture {
 
 export async function factoryFixture(): Promise<FactoryFixture> {
     const [owner] = await ethers.getSigners();
-    const factory = await deployContract("DogeSwapV2Factory", owner, owner.address);
+    const factory = await deployContract("BreedSwapV2Factory", owner, owner.address);
     return { factory };
 }
 

@@ -3,7 +3,15 @@ import { HardhatUserConfig } from "hardhat/config";
 import "./scripts/hardhat-tasks";
 
 const config: HardhatUserConfig = {
-    solidity: "0.8.9",
+    solidity: {
+        version: "0.8.9",
+        settings: {
+            optimizer: {
+                enabled: true,
+                runs: 1750,
+            },
+        },
+    },
     networks: {
         hardhat: {
             allowUnlimitedContractSize: true,

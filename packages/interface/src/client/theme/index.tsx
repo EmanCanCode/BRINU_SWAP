@@ -9,8 +9,6 @@ import styled, {
 import { useIsDarkMode } from "../state/user/hooks";
 import { Colors } from "./styled";
 
-import background from "../../../assets/embedded/background.jpeg";
-
 export * from "./components";
 
 const MEDIA_WIDTHS = {
@@ -215,6 +213,27 @@ html {
 body {
   min-height: 100vh;
   background-position: 0 -30vh;
-  background-image: url("${background}");
+  background-image: linear-gradient(
+    to left,
+    #f4d504,
+    #f8c10f,
+    #f8ae1d,
+    #f59b29,
+    #ef8933,
+    #e7783b,
+    #dc6942,
+    #ce5b48,
+    #bf4e4c,
+    #ae444e,
+    #9b3b4f,
+    #88344e,
+    #742e4b,
+    #612846,
+    #4d233f,
+    #3b1d36,
+    #2a172c,
+    #1b1121,
+    #0d0415
+  );
 }
 `;

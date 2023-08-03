@@ -1,9 +1,9 @@
 pragma solidity =0.5.16;
 
 import "./interfaces/IDogeSwapV2Factory.sol";
-import "./DogeSwapV2Pair.sol";
+import "./BreedSwapV2Pair.sol";
 
-contract DogeSwapV2Factory is IDogeSwapV2Factory {
+contract BreedSwapV2Factory is IDogeSwapV2Factory {
     address public feeTo;
     address public feeToSetter;
 
@@ -25,7 +25,7 @@ contract DogeSwapV2Factory is IDogeSwapV2Factory {
         (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
         require(token0 != address(0), "DogeSwapV2: ZERO_ADDRESS");
         require(getPair[token0][token1] == address(0), "DogeSwapV2: PAIR_EXISTS"); // single check is sufficient
-        bytes memory bytecode = type(DogeSwapV2Pair).creationCode;
+        bytes memory bytecode = type(BreedSwapV2Pair).creationCode;
         bytes32 salt = keccak256(abi.encodePacked(token0, token1));
         assembly {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)

@@ -94,6 +94,10 @@ export const promptPassword = async () => {
     });
 };
 
+export const printout = (contracts: any, erc20: any, factory: any, wwdoge: any) => {
+    console.log(contracts, erc20, factory, wwdoge);
+};
+
 export const deployExternalContracts = async (
     wwdogeAddress: string | undefined,
     factoryAddress: string | undefined,
@@ -102,7 +106,13 @@ export const deployExternalContracts = async (
     signer: Signer,
     hre: HardhatRuntimeEnvironment,
 ) => {
-    const deploymentOrder = ["ERC20", "WWDOGE", "DogeSwapV2Factory", "DogeSwapV2Router", "DogeSwapInterfaceMulticall"];
+    const deploymentOrder = [
+        "ERC20",
+        "WWDOGE",
+        "BreedSwapV2Factory",
+        "BreedSwapV2Router",
+        "DogeSwapInterfaceMulticall",
+    ];
 
     const [signerAddress, coreArtifacts, peripheryArtifacts] = await Promise.all([
         signer.getAddress(),
@@ -147,7 +157,12 @@ export const deployExternalContracts = async (
         switch (artifact.contractName) {
             case "ERC20":
                 for (const erc20Token of erc20Tokens) {
-                    await deployNamedContract(erc20Token, erc20Token, erc20Token, ethers.utils.parseEther("1000000"));
+                    await deployNamedContract(
+                        erc20Token,
+                        erc20Token,
+                        erc20Token,
+                        ethers.utils.parseEther("1000000000000"),
+                    );
                 }
                 break;
             case "WWDOGE":
@@ -158,7 +173,7 @@ export const deployExternalContracts = async (
                     console.log("WWDOGE address specified. Skipping deployment.");
                 }
                 break;
-            case "DogeSwapV2Factory":
+            case "BreedSwapV2Factory":
                 if (factoryAddress == undefined) {
                     console.log("Factory address unspecified. Deploying.");
                     await deployContract(signerAddress);
@@ -166,9 +181,9 @@ export const deployExternalContracts = async (
                     console.log("Fatory address specified. Skipping deployment.");
                 }
                 break;
-            case "DogeSwapV2Router":
+            case "BreedSwapV2Router":
                 await deployContract(
-                    factoryAddress ?? addresses["DogeSwapV2Factory"],
+                    factoryAddress ?? addresses["BreedSwapV2Factory"],
                     wwdogeAddress ?? addresses["WWDOGE"],
                 );
                 break;

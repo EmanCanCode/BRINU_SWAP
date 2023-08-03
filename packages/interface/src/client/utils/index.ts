@@ -24,6 +24,7 @@ const explorerPrefixes = {
     [ChainId.LOCALNET]: "explorer-testnet",
 };
 
+// explorer.dogechain.dog wuf
 export function getExplorerLink(
     chainId: ChainId,
     data: string,
@@ -93,7 +94,7 @@ export function getContract(address: string, ABI: any, library: Web3Provider, ac
 
     return new Contract(address, ABI, getProviderOrSigner(library, account) as any);
 }
-
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // account is optional
 export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
     return getContract(

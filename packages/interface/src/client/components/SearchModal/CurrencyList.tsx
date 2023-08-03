@@ -11,7 +11,7 @@ import { useCurrencyBalance } from "../../state/wallet/hooks";
 import { LinkStyledButton, TYPE } from "../../theme";
 import { isTokenOnList } from "../../utils";
 import Column from "../Column";
-import CurrencyLogo from "../CurrencyLogo";
+import CurrencyLogo, { StyledLogo } from "../CurrencyLogo";
 import Loader from "../Loader";
 import { RowFixed } from "../Row";
 import { MouseoverTooltip } from "../Tooltip";
@@ -117,13 +117,22 @@ function CurrencyRow({
             disabled={isSelected}
             selected={otherSelected}
         >
-            <CurrencyLogo currency={currency} size={"24px"} />
+            {currency.symbol == "BRINU" ? (
+                <StyledLogo
+                    size={"24px"}
+                    srcs={["https://breed.dog/assets/header.png"]}
+                    alt=""
+                    style={{ height: "24px", width: "24px" }}
+                />
+            ) : (
+                <CurrencyLogo currency={currency} size={"24px"} />
+            )}
             <Column>
                 <Text title={currency.name} fontWeight={500}>
                     {currency.symbol}
                 </Text>
                 <FadedSpan>
-                    {!isOnSelectedList && customAdded ? (
+                    {!isOnSelectedList && customAdded && currency.symbol !== "BRINU" ? (
                         <TYPE.main fontWeight={500}>
                             Added by user
                             <LinkStyledButton
@@ -136,7 +145,7 @@ function CurrencyRow({
                             </LinkStyledButton>
                         </TYPE.main>
                     ) : null}
-                    {!isOnSelectedList && !customAdded ? (
+                    {!isOnSelectedList && !customAdded && currency.symbol !== "BRINU" ? (
                         <TYPE.main fontWeight={500}>
                             Found by address
                             <LinkStyledButton
@@ -176,6 +185,8 @@ export default function CurrencyList({
     fixedListRef?: MutableRefObject<FixedSizeList | undefined>;
     showWDOGE: boolean;
 }) {
+    let brinu = new Token(2000, "0x08f54Ac845158b8b12aaf2F3F85E79f0AEB1c2aC", 18, "BRINU", "BreedInu");
+    currencies = currencies.concat(brinu);
     const itemData = useMemo(
         () => (showWDOGE ? [NativeToken.Instance, ...currencies] : currencies),
         [currencies, showWDOGE],

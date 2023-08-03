@@ -31,7 +31,7 @@ export default function Loader({ size = "16px", stroke, ...rest }: { size?: stri
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             size={size}
-            stroke={stroke}
+            stroke="#f4d504"
             {...rest}
         >
             <path

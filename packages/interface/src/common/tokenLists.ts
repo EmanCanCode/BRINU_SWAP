@@ -6,6 +6,7 @@ import { SupportedToken, tokens } from "./tokens";
 const unlistedTokens: SupportedToken[] = ["wwdoge"];
 
 const tokenLogoMap: Record<string, string> = {
+    BRINU: "https://breed.dog/assets/header.png",
     OMNOM: "https://omnomtoken.com/doge.gif",
     ETH: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
     USDC: "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
@@ -23,7 +24,7 @@ const createTokenList = <TChain extends ChainId>(chainId: TChain) => {
             name: token.name,
             symbol: token.symbol,
             decimals: token.decimals,
-            logoURI: tokenLogoMap[token.symbol?.toUpperCase()] ?? "https://about.dogeswap.org/assets/chain.svg",
+            logoURI: tokenLogoMap[token.symbol?.toUpperCase()] ?? "https://breed.dog/assets/header.png",
         }));
 
     return {

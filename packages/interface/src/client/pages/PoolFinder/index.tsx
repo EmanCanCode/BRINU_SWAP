@@ -6,7 +6,7 @@ import { Text } from "rebass";
 import { ButtonDropdownLight } from "../../components/Button";
 import { LightCard } from "../../components/Card";
 import { AutoColumn, ColumnCenter } from "../../components/Column";
-import CurrencyLogo from "../../components/CurrencyLogo";
+import CurrencyLogo, { StyledLogo } from "../../components/CurrencyLogo";
 import { FindPoolTabs } from "../../components/NavigationTabs";
 import { MinimalPositionCard } from "../../components/PositionCard";
 import Row from "../../components/Row";
@@ -86,6 +86,7 @@ export default function PoolFinder() {
                         setShowSearch(true);
                         setActiveField(Fields.TOKEN0);
                     }}
+                    style={{ backgroundColor: "#f4d504", color: "#0d0415" }}
                 >
                     {currency0 ? (
                         <Row>
@@ -110,10 +111,21 @@ export default function PoolFinder() {
                         setShowSearch(true);
                         setActiveField(Fields.TOKEN1);
                     }}
+                    style={{ backgroundColor: "#f4d504", color: "#0d0415" }}
                 >
                     {currency1 ? (
                         <Row>
-                            <CurrencyLogo currency={currency1} />
+                            {currency1.symbol == "BRINU" ? (
+                                <StyledLogo
+                                    size={"24px"}
+                                    srcs={["https://breed.dog/assets/header.png"]}
+                                    alt=""
+                                    style={{ height: "24px", width: "24px" }}
+                                />
+                            ) : (
+                                <CurrencyLogo currency={currency1} size={"24px"} />
+                            )}
+                            {/* <CurrencyLogo currency={currency1} /> */}
                             <Text fontWeight={500} fontSize={20} marginLeft={"12px"}>
                                 {currency1.symbol}
                             </Text>

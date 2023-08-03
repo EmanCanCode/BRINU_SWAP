@@ -72,3 +72,5 @@ cypress/videos
 dist
 interface/config.json
 typechain-types
+
+wallet.js

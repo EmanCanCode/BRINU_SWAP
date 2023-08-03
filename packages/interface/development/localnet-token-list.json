@@ -1,6 +1,6 @@
 {
     "name": "Local Token List",
-    "logoURI": "https://www.dogeswap.org/assets/images/192x192_App_Icon.png",
+    "logoURI": "https://breed.dog/assets/header.png",
     "keywords": [],
     "tags": {
         "local": {
@@ -16,7 +16,7 @@
             "symbol": "DAI",
             "name": "Test DAI",
             "decimals": 18,
-            "logoURI": "https://www.dogeswap.org/assets/images/192x192_App_Icon.png",
+            "logoURI": "https://breed.dog/assets/header.png",
             "tags": ["local"]
         }
     ],

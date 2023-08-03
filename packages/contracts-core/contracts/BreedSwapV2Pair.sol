@@ -1,14 +1,14 @@
 pragma solidity =0.5.16;
 
 import "./interfaces/IDogeSwapV2Pair.sol";
-import "./DogeSwapV2ERC20.sol";
+import "./BreedSwapV2ERC20.sol";
 import "./libraries/Math.sol";
 import "./libraries/UQ112x112.sol";
 import "./interfaces/IERC20.sol";
 import "./interfaces/IDogeSwapV2Factory.sol";
 import "./interfaces/IDogeSwapV2Callee.sol";
 
-contract DogeSwapV2Pair is IDogeSwapV2Pair, DogeSwapV2ERC20 {
+contract BreedSwapV2Pair is IDogeSwapV2Pair, BreedSwapV2ERC20 {
     using SafeMath for uint;
     using UQ112x112 for uint224;
 

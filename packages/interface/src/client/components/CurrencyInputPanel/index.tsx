@@ -92,21 +92,17 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 
 const StyledBalanceMax = styled.button`
     height: 28px;
-    background-color: ${({ theme }) => theme.primary5};
-    border: 1px solid ${({ theme }) => theme.primary5};
+    background-color: #0d0415;
+    border: 2px solid #0d0415;
     border-radius: 0.5rem;
     font-size: 0.875rem;
-
+    padding: 5px;
     font-weight: 500;
     cursor: pointer;
     margin-right: 0.5rem;
-    color: ${({ theme }) => theme.primaryText1};
+    color: #f4d504;
     :hover {
-        border: 1px solid ${({ theme }) => theme.primary1};
-    }
-    :focus {
-        border: 1px solid ${({ theme }) => theme.primary1};
-        outline: none;
+        border: 2px solid #f4d504;
     }
 
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -202,6 +198,7 @@ export default function CurrencyInputPanel({
                         </>
                     )}
                     <CurrencySelect
+                        style={{ backgroundColor: "#f4d504", border: "#f4d504", color: "black" }}
                         selected={!!currency}
                         className="open-currency-select-button"
                         onClick={() => {

@@ -11,7 +11,10 @@ interface TokenMetadata {
     decimals?: number;
 }
 
-const tokenMetadata: Record<SupportedToken, TokenMetadata> = {
+const tokenMetadata: Record<SupportedToken, TokenMetadata> | any = {
+    brinu: {
+        name: "Breed Inu",
+    },
     dst: {
         name: "DogeSwap Token",
     },

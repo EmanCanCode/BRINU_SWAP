@@ -11,22 +11,22 @@ const HomeMessage = ({ onDismiss }: DismissableProps) => {
             <h1>User Warning!</h1>
             <ol>
                 <li>
-                    DogeSwap is decentralised, and anybody can create a token. We do not endorse nor guarantee the
-                    legitimacy of any tokens tradable on DogeSwap, and there are a number of ways that swapping these
+                    Breed is decentralized, and anybody can create a token. We do not endorse nor guarantee the
+                    legitimacy of any tokens tradable on Breed, and there are a number of ways that swapping these
                     tokens could result in 100% loss.
                     <br />
                     <br />
                 </li>
                 <li>
-                    DogeSwap is currently in Beta and has not yet had any audits completed. There could be bugs with the
+                    Breed is currently in Beta and has not yet had any audits completed. There could be bugs with the
                     code that could result in loss of user funds.
                     <br />
                     <br />
                 </li>
                 <li>
-                    We do not offer support for tokens other than OMNOM at this stage. Many tokens have non-standard
-                    transfer functions when selling or transferring the tokens, and some tokens might turn out to be
-                    scams.
+                    We do not offer support for tokens other than those in our Breed ecosystem at this stage. Many
+                    tokens have non-standard transfer functions when selling or transferring the tokens, and some tokens
+                    might turn out to be scams.
                     <br />
                     <br />
                 </li>
@@ -75,9 +75,9 @@ const OtherMessage = ({ onDismiss }: DismissableProps) => {
                     <br />
                 </li>
                 <li>
-                    ⚠️ We do not offer support for tokens other than OMNOM at this stage. Many tokens have non-standard
-                    transfer functions when swapping or transferring the tokens, and some tokens might turn out to be
-                    scams.
+                    ⚠️ We do not offer support for tokens other than those in our Breed ecosystem at this stage. Many
+                    tokens have non-standard transfer functions when swapping or transferring the tokens, and some
+                    tokens might turn out to be scams.
                     <br />
                     <br />
                     <label style={{ paddingRight: 16 }}>
@@ -92,8 +92,8 @@ const OtherMessage = ({ onDismiss }: DismissableProps) => {
                     <br />
                 </li>
                 <li>
-                    ⚠️ DogeSwap is currently in Beta and has not yet had any audits completed. There could be bugs with
-                    the code that could result in loss of user funds.
+                    ⚠️ Breed Swap is currently in Beta and has not yet had any audits completed. There could be bugs
+                    with the code that could result in loss of user funds.
                     <br />
                     <br />
                     <label style={{ paddingRight: 16 }}>
